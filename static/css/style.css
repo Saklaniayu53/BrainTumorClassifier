@@ -1,0 +1,609 @@
+/*=========================================================
+    Brain Tumor Classification System
+    Professional Medical Dashboard
+==========================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/*=========================================================
+    THEME VARIABLES
+==========================================================*/
+
+:root{
+
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --text:#0f172a;
+    --secondary:#64748b;
+
+    --primary:#2563eb;
+    --primary-hover:#1d4ed8;
+
+    --danger:#ef4444;
+    --danger-hover:#dc2626;
+
+    --success:#22c55e;
+
+    --border:#dbe4ef;
+
+    --status:#eef2ff;
+
+    --progress:#dbe4ef;
+
+    --shadow:0 10px 35px rgba(15,23,42,.08);
+
+}
+
+/*=========================================================*/
+
+body.dark{
+
+    --bg:#0f172a;
+
+    --card:#1e293b;
+
+    --text:#ffffff;
+
+    --secondary:#94a3b8;
+
+    --primary:#3b82f6;
+
+    --primary-hover:#2563eb;
+
+    --danger:#ef4444;
+
+    --danger-hover:#dc2626;
+
+    --success:#22c55e;
+
+    --border:#334155;
+
+    --status:#334155;
+
+    --progress:#334155;
+
+    --shadow:0 18px 40px rgba(0,0,0,.45);
+
+}
+
+/*=========================================================
+    GLOBAL
+==========================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    transition:.35s;
+
+    min-height:100vh;
+
+}
+
+/*=========================================================
+    CONTAINER
+==========================================================*/
+
+.main-container{
+
+    width:95%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:40px 0;
+
+}
+
+/*=========================================================
+    HEADER
+==========================================================*/
+
+header{
+
+    margin-bottom:40px;
+
+}
+
+.header-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+}
+
+.title-section h1{
+
+    font-size:36px;
+
+    font-weight:700;
+
+}
+
+.title-section p{
+
+    margin-top:8px;
+
+    color:var(--secondary);
+
+}
+
+/*=========================================================
+    THEME SWITCH
+==========================================================*/
+
+.theme-switch{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+#themeLabel{
+
+    font-weight:600;
+
+}
+
+.switch{
+
+    position:relative;
+
+    width:60px;
+
+    height:32px;
+
+}
+
+.switch input{
+
+    display:none;
+
+}
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#94a3b8;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.slider::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:24px;
+
+    height:24px;
+
+    left:4px;
+
+    top:4px;
+
+    background:white;
+
+    border-radius:50%;
+
+    transition:.3s;
+
+}
+
+input:checked + .slider{
+
+    background:var(--primary);
+
+}
+
+input:checked + .slider::before{
+
+    transform:translateX(28px);
+
+}
+
+/*=========================================================
+    CONTENT GRID
+==========================================================*/
+
+.content{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:30px;
+
+}
+
+/*=========================================================
+    CARDS
+==========================================================*/
+
+.upload-card,
+.result-card{
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+}
+
+.upload-card:hover,
+.result-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.upload-card h2,
+.result-card h2{
+
+    color:var(--primary);
+
+    margin-bottom:25px;
+
+}
+
+/*=========================================================
+    DROP AREA
+==========================================================*/
+
+#drop-area{
+
+    border:2px dashed var(--primary);
+
+    border-radius:18px;
+
+    padding:45px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#drop-area:hover{
+
+    background:rgba(37,99,235,.08);
+
+}
+
+#drop-area p{
+
+    font-size:18px;
+
+    font-weight:500;
+
+}
+
+#drop-area span{
+
+    display:block;
+
+    margin:18px 0;
+
+    color:var(--secondary);
+
+}
+
+/*=========================================================
+    BUTTONS
+==========================================================*/
+
+#browseButton{
+
+    background:var(--primary);
+
+    color:white;
+
+    border:none;
+
+    padding:12px 28px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#browseButton:hover{
+
+    background:var(--primary-hover);
+
+}
+
+.button-group{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+.button-group button{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:14px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+#predictButton{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+#predictButton:hover{
+
+    background:var(--primary-hover);
+
+}
+
+#predictButton:disabled{
+
+    background:#94a3b8;
+
+    cursor:not-allowed;
+
+}
+
+#clearButton{
+
+    background:var(--danger);
+
+    color:white;
+
+}
+
+#clearButton:hover{
+
+    background:var(--danger-hover);
+
+}
+
+/*=========================================================
+    PREVIEW
+==========================================================*/
+
+.preview-container{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+#previewImage{
+
+    display:none;
+
+    width:100%;
+
+    max-height:350px;
+
+    object-fit:contain;
+
+    border-radius:15px;
+
+    border:2px solid var(--border);
+
+}
+
+/*=========================================================
+    RESULT
+==========================================================*/
+
+#status{
+
+    background:var(--status);
+
+    padding:12px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    color:var(--secondary);
+
+}
+
+#prediction{
+
+    margin-top:20px;
+
+}
+
+#prediction h3{
+
+    font-size:34px;
+
+    color:var(--primary);
+
+    margin-top:10px;
+
+}
+
+#confidence{
+
+    margin-top:35px;
+
+}
+
+#confidence h3{
+
+    margin-top:10px;
+
+    font-size:30px;
+
+}
+
+/*=========================================================
+    PROGRESS BAR
+==========================================================*/
+
+.progress{
+
+    margin-top:20px;
+
+    width:100%;
+
+    height:14px;
+
+    background:var(--progress);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+#confidenceBar{
+
+    width:0%;
+
+    height:100%;
+
+    background:var(--success);
+
+    transition:width .8s ease;
+
+}
+
+/*=========================================================
+    FADE ANIMATION
+==========================================================*/
+
+.upload-card,
+.result-card{
+
+    animation:fadeIn .6s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*=========================================================
+    RESPONSIVE
+==========================================================*/
+
+@media(max-width:1000px){
+
+    .content{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .header-top{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .title-section h1{
+
+        font-size:28px;
+
+    }
+
+    .button-group{
+
+        flex-direction:column;
+
+    }
+
+}
